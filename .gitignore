@@ -1,4 +1,31 @@
-.vscode/
+# Python artifacts
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+ENV/
+env/
+
+# Instance folder (runtime data like DBs)
+instance/
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# Secrets and environment variables
 .env
+
+# OS-specific files
+.DS_Store  # macOS
