@@ -51,3 +51,7 @@ class RegistrationForm(FlaskForm):
         user = db.session.scalar(sa.select(User).where(User.email == email.data))
         if user is not None:
             raise ValidationError("Please use a different email address.")
+
+
+class EmptyForm(FlaskForm):
+    submit = SubmitField("Submit")
