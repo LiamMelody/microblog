@@ -27,7 +27,7 @@ def before_request():
     g.locale = str(get_locale())
 
 
-@app.route("/", methods=["GET", "POST"])
+# @app.route("/", methods=["GET", "POST"])
 @app.route("/index", methods=["GET", "POST"])
 @login_required
 def index():

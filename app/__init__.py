@@ -9,7 +9,8 @@ from flask_mail import Mail
 from flask_moment import Moment
 from flask_babel import Babel, lazy_gettext as _l
 from config import Config
-from app import models, routes
+from app import routes, models, errors, cli
+from flask_babel import Babel
 
 
 def get_locale():
@@ -21,6 +22,7 @@ app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+babel = Babel(app)
 
 
 login = LoginManager(app)
