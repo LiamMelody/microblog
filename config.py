@@ -15,3 +15,5 @@ class Config:
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
     ADMINS = ["liammelody05@gmail.com"]
     POSTS_PER_PAGE = 25
+    ELASTICSEARCH_URL = os.environ.get("ELASTICSEARCH_URL")
+    WHOOSH_ENABLED = True
