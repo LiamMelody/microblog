@@ -12,7 +12,7 @@ from config import Config
 
 
 def get_locale():
-    #return request.accept_languages.best_match(current_app.config['LANGUAGES'])
+    return request.accept_languages.best_match(current_app.config['LANGUAGES'])
     return 'es'
 
 db = SQLAlchemy()
@@ -49,6 +49,15 @@ def create_app(config_class=Config):
     app.register_blueprint(cli_bp)
 
     if not app.debug and not app.testing:
+        if app.config["ELASTICSEARCH_URL"]:
+            app.elasticsearch = Elasticsearch(
+			[app.config["ELASTICSEARCH_URL"]],
+			request_timeout=1,
+			max_retries=0,
+			retry_on_timeout=False,
+		)
+        else:
+            app.elasticsearch = None
         if app.config['MAIL_SERVER']:
             auth = None
             if app.config['MAIL_USERNAME'] or app.config['MAIL_PASSWORD']:
